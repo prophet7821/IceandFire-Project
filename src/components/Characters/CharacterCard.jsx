@@ -1,19 +1,28 @@
-import React from "react";
-import {Card ,CardActions,CardContent,CardMedia} from '@mui/material';
+import React ,{useState} from "react";
+import {
+  Card,
+  CardActionArea,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Typography,
+  Modal
+} from "@mui/material";
+const CharacterCard = ({ fullName, title, family, imageUrl }) => {
 
-
-const CharacterCard=({fullName ,title ,family,imageUrl})=>{
-
-
-    return (
-        <Card>
-            {fullName}
-            {title}
-            {family}
-            {imageUrl}
-        </Card>
-    )
-
-}
+  return (
+    <CardActionArea>
+      <Card raised>
+        <CardMedia
+          component="img"
+          alt={fullName}
+          image={imageUrl}
+          sx={{ width: 200, height: 200 }}
+        />
+      </Card>
+    </CardActionArea>
+    
+  );
+};
 
 export default CharacterCard;

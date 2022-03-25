@@ -24,13 +24,15 @@ const Main = ({ characters }) => {
         />
       </Grid>
 
-      <Grid container justifyContent="center" m={12}>
+      <Grid container mt={5}>
         {filteredCharacters && filteredCharacters.length > 0 ? (
           <CharacterGrid characterList={filteredCharacters} />
         ) : (
           <CharacterGrid characterList={characters} />
         )}
       </Grid>
+
+
     </Grid>
   );
 };
