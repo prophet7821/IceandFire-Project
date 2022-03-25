@@ -1,14 +1,14 @@
-import React,{ useState ,useEffect} from "react";
-
-import { Grid ,Card} from "@mui/material";
-
+//imports
+import React, { useState, useEffect } from "react";
+import { Grid, Divider, Chip } from "@mui/material";
 import Search from "./UI/Search";
-import CharacterGrid from './Characters/CharacterGrid';
+import CharacterGrid from "./Characters/CharacterGrid";
 
 const Main = ({ characters }) => {
   //states
   const [filteredCharacters, setFilteredCharacters] = useState();
 
+  //styles
   const style = {
     "z-index": "100",
   };
@@ -16,7 +16,7 @@ const Main = ({ characters }) => {
   return (
     <Grid style={style} container direction="row" justifyContent="center">
       {/* Search Grid */}
-      <Grid container justifyContent="center">
+      <Grid container justifyContent="center" mt={25}>
         <Search
           characters={characters}
           filteredCharacters={filteredCharacters}
@@ -24,19 +24,13 @@ const Main = ({ characters }) => {
         />
       </Grid>
 
-    {
-      filteredCharacters && filteredCharacters.length > 0 ? (
-        <CharacterGrid characterList={filteredCharacters}/>
-      ) : (
-        <CharacterGrid characterList={characters}/>
-      )
-    }
-      {/* <Grid container justifyContent="center">
-        <Grid item>
-          <Card></Card>
-        </Grid>
-      </Grid> */}
-
+      <Grid container justifyContent="center" m={12}>
+        {filteredCharacters && filteredCharacters.length > 0 ? (
+          <CharacterGrid characterList={filteredCharacters} />
+        ) : (
+          <CharacterGrid characterList={characters} />
+        )}
+      </Grid>
     </Grid>
   );
 };

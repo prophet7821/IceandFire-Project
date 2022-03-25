@@ -23,7 +23,7 @@ const Search = ({ characters, filteredCharacters, setFilteredCharacters }) => {
   };
 
   return (
-    <Grid item xl={6} lg={6} md={6} sm={12} xs={12} mt={25}>
+    <Grid item xl={6} lg={6} md={6} sm={12} xs={12}>
       <SearchBar
         fullWidth
         placeholder="Search Character"
