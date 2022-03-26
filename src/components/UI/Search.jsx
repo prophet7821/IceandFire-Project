@@ -17,7 +17,7 @@ const SearchBar = styled(TextField)({
 const Search = ({ characters, filteredCharacters, setFilteredCharacters }) => {
   const handleChange = async (e) => {
     const selected = characters.filter((character) =>
-      character.fullName.startsWith(e.target.value)
+      character.name.startsWith(e.target.value)
     );
     setFilteredCharacters(selected);
   };

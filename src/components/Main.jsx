@@ -1,6 +1,6 @@
 //imports
 import React, { useState, useEffect } from "react";
-import { Grid, Divider, Chip } from "@mui/material";
+import { Grid ,Modal} from "@mui/material";
 import Search from "./UI/Search";
 import CharacterGrid from "./Characters/CharacterGrid";
 
@@ -23,7 +23,7 @@ const Main = ({ characters }) => {
           setFilteredCharacters={setFilteredCharacters}
         />
       </Grid>
-
+      {/* Character Card */}
       <Grid container mt={5}>
         {filteredCharacters && filteredCharacters.length > 0 ? (
           <CharacterGrid characterList={filteredCharacters} />
