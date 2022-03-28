@@ -35,10 +35,10 @@ const CharacterCard = (character) => {
     boxShadow: 24,
     p: 1,
     fontSize:{
-      xs:"0.4rem",
-      sm:"0.6rem",
-      md:"0.8rem",
-      lg:"1rem",
+      xs:"0.5rem",
+      sm:"0.8rem",
+      md:"1rem",
+      lg:"1.2rem",
       xl:"1.5rem"
     }
   };
@@ -75,9 +75,9 @@ const CharacterCard = (character) => {
             container
             sx={styles}
             lg={8}
-            md={8}
-            sm={8}
-            xs={8}
+            md={9}
+            sm={10}
+            xs={11}
             justifyContent="center"
           >
             <Grid item lg={4} md={4} sm={4} xs={4}>
