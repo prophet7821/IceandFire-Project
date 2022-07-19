@@ -1,25 +1,22 @@
 //imports
-import React, { useState, useEffect } from "react";
-import { readData } from "./api/readData";
+import React, { useEffect } from "react";
+import { useDispatch} from "react-redux";
+import { getCharacters } from "./redux/features/character/characterSlice";
 import Main from "./components/Main";
-import './App.css'
+import "./App.css";
 
 const App = () => {
-  //states
-  const [characters, setCharacters] = useState([]);
 
-  //useEffect
+  //dispatch events
+  const dispatch = useDispatch();
   useEffect(() => {
-    readData().then((data) => {
-      setCharacters(data.data);
-      console.log(characters);
-    });
+    dispatch(getCharacters());
   }, []);
 
   return (
-    <Main
-    characters={characters}
-    />
+    <>
+      <Main />
+    </>
   );
 };
 

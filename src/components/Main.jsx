@@ -1,38 +1,35 @@
 //imports
-import React, { useState, useEffect } from "react";
-import { Grid ,Modal} from "@mui/material";
+import React from "react";
+import { Grid } from "@mui/material";
 import Search from "./UI/Search";
 import CharacterGrid from "./Characters/CharacterGrid";
-
-const Main = ({ characters }) => {
-  //states
-  const [filteredCharacters, setFilteredCharacters] = useState();
-
+import { useSelector } from "react-redux";
+const Main = () => {
   //styles
   const style = {
-    "z-index": "100",
+    zIndex: "100",
   };
+
+  const { isLoading } = useSelector((state) => state.characters);
 
   return (
     <Grid style={style} container direction="row" justifyContent="center">
       {/* Search Grid */}
       <Grid container justifyContent="center" mt={25}>
-        <Search
-          characters={characters}
-          filteredCharacters={filteredCharacters}
-          setFilteredCharacters={setFilteredCharacters}
-        />
+        <Search />
       </Grid>
+
+      {isLoading && (
+        <div className="loading">
+          <h1>Loading...</h1>
+        </div>
+      )}
+
+      
       {/* Character Card */}
       <Grid container mt={5}>
-        {filteredCharacters && filteredCharacters.length > 0 ? (
-          <CharacterGrid characterList={filteredCharacters} />
-        ) : (
-          <CharacterGrid characterList={characters} />
-        )}
+        <CharacterGrid />
       </Grid>
-
-
     </Grid>
   );
 };

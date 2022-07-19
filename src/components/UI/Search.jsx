@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Grid, TextField } from "@mui/material";
 import { styled } from "@mui/material/styles";
+import { useDispatch} from "react-redux";
+import { filterItem } from "../../redux/features/character/characterSlice";
 
 const SearchBar = styled(TextField)({
   "& .MuiOutlinedInput-root": {
@@ -14,20 +16,16 @@ const SearchBar = styled(TextField)({
   },
 });
 
-const Search = ({ characters, filteredCharacters, setFilteredCharacters }) => {
-  const handleChange = async (e) => {
-    const selected = characters.filter((character) =>
-      character.name.startsWith(e.target.value)
-    );
-    setFilteredCharacters(selected);
-  };
-
+const Search = () => {
+  const dispatch = useDispatch();
   return (
     <Grid item xl={6} lg={6} md={6} sm={12} xs={12}>
       <SearchBar
         fullWidth
         placeholder="Search Character"
-        onChange={handleChange}
+        onChange={(e) => {
+          dispatch(filterItem({content:e.target.value}));
+        }}
       />
     </Grid>
   );

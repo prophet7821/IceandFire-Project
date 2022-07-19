@@ -8,15 +8,8 @@ import {
   CardMedia,
   Modal,
   Grid,
-  createTheme,
-  responsiveFontSizes,
-  ThemeProvider,
-  Typography,
 } from "@mui/material";
 import { Text, Heading } from "@chakra-ui/react";
-
-let theme = createTheme();
-theme = responsiveFontSizes(theme);
 
 const CharacterCard = (character) => {
   //states
@@ -34,13 +27,13 @@ const CharacterCard = (character) => {
     "border-radius": "10px",
     boxShadow: 24,
     p: 1,
-    fontSize:{
-      xs:"0.5rem",
-      sm:"0.8rem",
-      md:"1rem",
-      lg:"1.2rem",
-      xl:"1.5rem"
-    }
+    fontSize: {
+      xs: "0.5rem",
+      sm: "0.8rem",
+      md: "1rem",
+      lg: "1.2rem",
+      xl: "1.5rem",
+    },
   };
 
   return (
@@ -73,6 +66,7 @@ const CharacterCard = (character) => {
         <Fade in={isOpen}>
           <Grid
             container
+            item
             sx={styles}
             lg={8}
             md={9}
@@ -95,21 +89,15 @@ const CharacterCard = (character) => {
                 <Text>Father:{character.father}</Text>
                 <Text>
                   Titles:
-                  {character.titles.map((title) => {
-                    if (
-                      title.includes("Baratheon") ||
-                      title.includes("Stark") ||
-                      title.includes("Targaryen")
-                    )
-                      return;
-                    else
-                      return (
-                        <span>
-                          {title}
-                          <br />
-                        </span>
-                      );
-                  })}
+                  {character.titles.map((title, index) =>(
+                    [
+                      "Baratheon",
+                      "Stark",
+                      "Targaryen",
+                      "Greyjoy",
+                      "Lannister",
+                    ].every(w=>!title.includes(w)) && <span key={index}>{title}<br/></span>
+                  ))}
                 </Text>
               </CardContent>
             </Grid>
@@ -117,69 +105,57 @@ const CharacterCard = (character) => {
               <CardContent>
                 <Text>
                   Origin:
-                  {character.origin.map((ori) => {
-                    return (
-                      <span>
-                        {ori}
-                        <br />
-                      </span>
-                    );
-                  })}
+                  {character.origin.map((ori, index) => (
+                    <span key={index}>
+                      {ori}
+                      <br />
+                    </span>
+                  ))}
                 </Text>
                 <Text>
                   Culture:
-                  {character.culture.map((cul) => {
-                    return (
-                      <span>
-                        {cul}
-                        <br />
-                      </span>
-                    );
-                  })}
+                  {character.culture.map((cul, index) => (
+                    <span key={index}>
+                      {cul}
+                      <br />
+                    </span>
+                  ))}
                 </Text>
                 <Text>
                   Religion:
-                  {character.religion.map((rel) => {
-                    return (
-                      <span>
-                        {rel}
-                        <br />
-                      </span>
-                    );
-                  })}
+                  {character.religion.map((rel, index) => (
+                    <span key={index}>
+                      {rel}
+                      <br />
+                    </span>
+                  ))}
                 </Text>
                 <Text>
                   Spouse:
-                  {character.spouse.map((spous) => {
-                    return (
-                      <span>
-                        {spous}
-                        <br />
-                      </span>
-                    );
-                  })}
+                  {character.spouse.map((spous, index) => (
+                    <span key={index}>
+                      {spous}
+                      <br />
+                    </span>
+                  ))}
                 </Text>
                 <Text>
                   Lovers:
-                  {character.lovers.map((lover) => {
-                    return (
-                      <span>
-                        {lover}
-                        <br />
-                      </span>
-                    );
-                  })}
+                  {character.lovers.map((lover, index) => (
+                    <span key={index}>
+                      {lover}
+                      <br />
+                    </span>
+                  ))}
                 </Text>
                 <Text>
                   Siblings:
-                  {character.siblings.map((sibling) => {
-                    return (
-                      <span>
-                        {sibling}
-                        <br />
-                      </span>
-                    );
-                  })}
+                  {character.siblings.map((sibling, index) => (
+                    <span key={index}>
+                      {sibling}
+                      <br />
+                    </span>
+                  ))}
                 </Text>
               </CardContent>
             </Grid>

@@ -1,13 +1,15 @@
 import React from "react";
 import CharacterCard from "./CharacterCard";
-import { Grid, Card } from "@mui/material";
+import { Grid} from "@mui/material";
+import {useSelector} from 'react-redux';
 
-const CharacterGrid = ({ characterList }) => {
+const CharacterGrid = () => {
+  const {selectedCharacters} = useSelector((state) =>state.characters);
   return (
       <Grid container justifyContent="center">
-        {characterList.map((character) => (
-          <Grid item m={2}>
-            <CharacterCard key={character.id} {...character} />
+        {selectedCharacters.map((character,index) => (
+          <Grid key={character.id} item m={2}>
+            <CharacterCard  {...character} />
           </Grid>
         ))}
       </Grid>
